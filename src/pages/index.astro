@@ -13,9 +13,10 @@ import Button from "../components/Button.astro";
             <h1>Harry Skerritt</h1>
             <h2>Game Developer</h2>
 
-            <span class="contact-button">
-                 <Button text="Contact Me" href="/contact" variant="primary" fullWidth/>
-            </span>
+            <a href="/contact" class="glitch-btn">
+                <span class="text">Contact Me</span>
+                <span class="decoration">_</span>
+            </a>
 
         </div>
 
@@ -78,12 +79,41 @@ import Button from "../components/Button.astro";
         box-shadow: 0 20px 100px 50px hsl(0deg 0% 0% / 0.25);
     }
 
-
     .image {
         width: 48%;
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .glitch-btn {
+        background-color: var(--orange);
+        color: #2E2F3C;
+        border: none;
+        padding: 1.2rem;
+        font-family: 'IBM Plex Mono', monospace;
+        font-weight: bold;
+        font-size: 1.1rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        transition: all 0.2s;
+        margin-top: 2rem;
+        border-radius: 1rem;
+        width: 20rem;
+        margin-left: 40rem;
+        text-decoration: none;
+    }
+
+    .glitch-btn:hover {
+        background-color: var(--nav-hover);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 0 var(--orange);
+    }
+
+    .glitch-btn:active {
+        transform: translateY(0);
+        box-shadow: none;
     }
 
 </style>

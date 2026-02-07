@@ -4,8 +4,164 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Contact Me | Harry Skerritt">
 
-    <section class="hero">
-        <h1>Contact</h1>
+    <section class="contact-lander">
+        <div class="contact-wrapper">
+            <div class="contact-header">
+                <h1>Contact Me</h1>
+                <p>
+                    <span>Reach out</span>
+                    using the form below
+                </p>
+            </div>
+
+            <form class="visual-form" onsubmit="return false;">
+                <div class="input-row">
+                    <div class="field">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="e.g. John Doe" />
+                    </div>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="email@domain.com" />
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="6" placeholder="Write your message here..."></textarea>
+                </div>
+
+                <button class="glitch-btn">
+                    <span class="text">Send Message</span>
+                    <span class="decoration">_</span>
+                </button>
+            </form>
+        </div>
     </section>
 
+
 </Layout>
+
+<style>
+    .contact-lander {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+    }
+
+    .contact-wrapper {
+        width: 100%;
+        max-width: 800px;
+    }
+
+    .contact-header {
+        margin-bottom: 3rem;
+        border-left: 4px solid var(--orange);
+        padding-left: 1.5rem;
+    }
+
+    .contact-header h1 {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 2.5rem;
+        color: var(--orange);
+        margin: 0;
+    }
+
+    .contact-header p {
+        color: var(--white);
+        opacity: 0.8;
+        font-family: var(--font-mono), monospace;
+    }
+
+    .contact-header span {
+        color: var(--orange);
+        font-weight: bold;
+    }
+
+    .visual-form {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .input-row {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        flex: 1;
+
+    }
+
+    .field textarea, input {
+        resize: none;
+        border-radius: 1rem;
+    }
+
+    label {
+        font-family: var(--font-mono), monospace;
+        color: var(--orange);
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
+
+    input, select, textarea {
+        background-color: rgba(255, 255, 255, 0.05);
+        border: 2px solid #444;
+        padding: 1rem;
+        color: var(--white);
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 1rem;
+        transition: all 0.2s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+        outline: none;
+        border-color: var(--orange);
+        background-color: rgba(255, 174, 73, 0.1);
+        box-shadow: 0 0 15px rgba(255, 174, 73, 0.3);
+    }
+
+    .glitch-btn {
+        background-color: var(--orange);
+        color: #2E2F3C;
+        border: none;
+        padding: 1.2rem;
+        font-family: 'IBM Plex Mono', monospace;
+        font-weight: bold;
+        font-size: 1.1rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        transition: all 0.2s;
+        margin-top: 1rem;
+        border-radius: 1rem;
+    }
+
+    .glitch-btn:hover {
+        background-color: var(--nav-hover);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 0 var(--orange);
+    }
+
+    .glitch-btn:active {
+        transform: translateY(0);
+        box-shadow: none;
+    }
+
+    /* Mobile handling */
+    @media (max-width: 600px) {
+        .input-row {
+            flex-direction: column;
+        }
+        .contact-header h1 {
+            font-size: 1.8rem;
+        }
+    }
+</style>
