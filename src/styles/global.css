@@ -1,0 +1,23 @@
+:root {
+    --font-mono: 'IBM Plex Mono', monospace;
+    --orange: #F18805;
+    --white: #DDE3E0;
+}
+
+html {
+    font-family: var(--font-mono);
+    background: #2F2F3A;
+    background: radial-gradient(circle,rgba(47, 47, 58, 1) 0%, rgba(37, 38, 50, 1) 100%);
+    color: #ffffff;
+}
+
+
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+h1 {
+    color: var(--orange);
+}

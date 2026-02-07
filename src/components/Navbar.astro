@@ -1,0 +1,100 @@
+---
+import GithubIcon from "./icons/GithubIcon.astro";
+import LinkedinLogo from "./icons/LinkedinLogo.astro";
+import ItchLogo from "./icons/ItchLogo.astro";
+const links = [
+    { name: '/home', href: '/' },
+    { name: '/projects', href: '/projects' },
+    { name: '/about', href: '/about' },
+    { name: '/contact', href: '/contact' },
+];
+---
+
+<nav class="navbar">
+    <ul class="external-links">
+        <li class="nav-link">
+            <a href="https://github.com/Harry-Skerritt/" class="social-link">
+                <GithubIcon size="32px" />
+            </a>
+        </li>
+
+        <li class="nav-link">
+            <a href="https://www.linkedin.com/in/harry-skerritt-3491b01a9/" class="social-link">
+                <LinkedinLogo size="32px" />
+            </a>
+        </li>
+
+        <li class="nav-link">
+            <a href="https://harry-skerritt.itch.io/" class="social-link">
+                <ItchLogo size="32px" />
+            </a>
+        </li>
+
+
+    </ul>
+
+    <ul class="nav-links">
+        {links.map((link) => (
+                <li class="nav-link"><a href={link.href}>{link.name}</a></li>
+        ))}
+    </ul>
+</nav>
+
+<style>
+
+    .navbar {
+        width: 100%;
+        background-color: #2E2F3C;
+        box-shadow: 0 0 100px 24px hsl(0deg 0% 0% / 0.25);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        box-sizing: border-box;
+    }
+
+    .external-links, .nav-links {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 2rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .social-link {
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        transition: color 0.2s ease, transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .social-link img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .social-link:hover {
+        color: var(--orange) !important;
+        transform: scale(1.1);
+    }
+
+    .img-link:hover img {
+        filter: invert(62%) sepia(88%) saturate(3000%) hue-rotate(115deg) brightness(100%) contrast(105%);
+    }
+
+
+    .nav-link a {
+        text-decoration: none;
+        color: var(--white);
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 1.5rem;
+        transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+        color: var(--orange);
+    }
+
+</style>
