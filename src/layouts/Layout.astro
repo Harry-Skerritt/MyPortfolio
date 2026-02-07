@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import Navbar from "../components/Navbar.astro";
+
+const { title = "Harry Skerritt - Game Developer" } = Astro.props;
 ---
 
 <!doctype html>
@@ -17,7 +19,7 @@ import Navbar from "../components/Navbar.astro";
 
 
 		<meta name="generator" content={Astro.generator} />
-		<title>Harry Skerritt - Game Developer</title>
+		<title>{title}</title>
 	</head>
 
 	<body>
