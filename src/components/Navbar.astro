@@ -2,12 +2,20 @@
 import GithubIcon from "./icons/GithubIcon.astro";
 import LinkedinLogo from "./icons/LinkedinLogo.astro";
 import ItchLogo from "./icons/ItchLogo.astro";
+
+const { pathname } = Astro.url;
+
 const links = [
     { name: '/home', href: '/' },
     { name: '/projects', href: '/projects' },
     { name: '/about', href: '/about' },
     { name: '/contact', href: '/contact' },
 ];
+
+const isActive = (href: string) => {
+    const normalize = (path: string) => path.replace(/\/$/, "");
+    return normalize(pathname) === normalize(href);
+};
 ---
 
 <nav class="navbar">
@@ -35,7 +43,14 @@ const links = [
 
     <ul class="nav-links">
         {links.map((link) => (
-                <li class="nav-link"><a href={link.href}>{link.name}</a></li>
+                <li class="nav-link">
+                    <a
+                            href={link.href}
+                            class={isActive(link.href) ? "active" : ""}
+                    >
+                        {link.name}
+                    </a>
+                </li>
         ))}
     </ul>
 </nav>
@@ -93,8 +108,13 @@ const links = [
         transition: color 0.2s ease;
     }
 
+    .nav-links a.active {
+        color: var(--orange) !important;
+        font-weight: bold;
+    }
+
     .nav-links a:hover {
-        color: var(--orange);
+        color: var(--nav-hover);
     }
 
 </style>

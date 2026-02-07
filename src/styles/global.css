@@ -1,11 +1,12 @@
 :root {
-    --font-mono: 'IBM Plex Mono', monospace;
+    --font-mono: 'IBM Plex Mono';
     --orange: #F18805;
+    --nav-hover: #FFAE49;
     --white: #DDE3E0;
 }
 
 html {
-    font-family: var(--font-mono);
+    font-family: var(--font-mono), monospace;
     background: #2F2F3A;
     background: radial-gradient(circle,rgba(47, 47, 58, 1) 0%, rgba(37, 38, 50, 1) 100%);
     color: #ffffff;
