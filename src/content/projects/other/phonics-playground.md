@@ -1,6 +1,7 @@
 ---
 title: "Phonics Playground"
 description: "This is a small web-app I designed in around 5-6 days for my partners mum as an aid to help teach phonics to children"
+date: "May 2025"
 image: "/projects/other/phonicsplayground.png"
 tags: ["WebDev", "React", "JavaScript"]
 link: "https://harry-skerritt.github.io/PhonicsPlayground/"

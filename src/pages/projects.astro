@@ -1,13 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Navbar from "../components/Navbar.astro";
 import ProjectCard from '../components/ProjectCard.astro';
 
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 const allProjects = await getCollection('projects');
-const games = allProjects.filter(p => p.data.category === 'game');
-const otherWork = allProjects.filter(p => p.data.category === 'other');
+
+const sortedProjects = allProjects.sort((a, b) => {
+    const dateA = a.data.date ? new Date(a.data.date).getTime() : 0;
+    const dateB = b.data.date ? new Date(b.data.date).getTime() : 0;
+    return dateB - dateA;
+});
+
+const games = sortedProjects.filter(p => p.data.category === 'game');
+const otherWork = sortedProjects.filter(p => p.data.category === 'other');
 ---
 
 <Layout title="My Projects | Harry Skerritt">
@@ -25,6 +31,10 @@ const otherWork = allProjects.filter(p => p.data.category === 'other');
                     <ProjectCard
                             title={project.data.title}
                             description={project.data.description}
+                            date={project.data.date?.toLocaleDateString('en-GB', {
+                                year: 'numeric',
+                                month: 'short',
+                            })}
                             tags={project.data.tags}
                             image={project.data.image}
                             link={project.data.link}
@@ -45,6 +55,10 @@ const otherWork = allProjects.filter(p => p.data.category === 'other');
                     <ProjectCard
                             title={project.data.title}
                             description={project.data.description}
+                            date={project.data.date?.toLocaleDateString('en-GB', {
+                                year: 'numeric',
+                                month: 'short',
+                            })}
                             tags={project.data.tags}
                             image={project.data.image}
                             link={project.data.link}
