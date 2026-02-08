@@ -15,7 +15,9 @@ import Navbar from "../components/Navbar.astro";
                 </p>
             </div>
 
-            <form class="visual-form" onsubmit="return false;">
+            <form class="visual-form" action="/send-email" method="POST">
+                <input type="text" name="honeypot" style="display:none" tabindex="-1" autocomplete="off" />
+
                 <div class="input-row">
                     <div class="field">
                         <label for="name">Name</label>
@@ -32,7 +34,7 @@ import Navbar from "../components/Navbar.astro";
                     <textarea id="message" rows="6" placeholder="Write your message here..."></textarea>
                 </div>
 
-                <button class="glitch-btn">
+                <button type="submit" class="glitch-btn" id="submit-btn">
                     <span class="text">Send Message</span>
                     <span class="decoration">_</span>
                 </button>
@@ -156,6 +158,12 @@ import Navbar from "../components/Navbar.astro";
         box-shadow: none;
     }
 
+    .glitch-btn.submitting {
+        opacity: 0.7;
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+
     /* Mobile handling */
     @media (max-width: 600px) {
         .input-row {
@@ -166,3 +174,17 @@ import Navbar from "../components/Navbar.astro";
         }
     }
 </style>
+
+
+<script>
+    const form = document.querySelector('.visual-form');
+    const btn = document.querySelector('#submit-btn');
+    const btnText = btn?.querySelector('.text');
+
+    if (form && btn && btnText) {
+        form.addEventListener('submit', () => {
+            btn.classList.add('submitting');
+            btnText.textContent = "Sending...";
+        });
+    }
+</script>
