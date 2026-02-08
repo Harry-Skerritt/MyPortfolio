@@ -7,7 +7,7 @@ const projects = defineCollection({
         description: z.string(),
         image: z.string(),
         tags: z.array(z.string()),
-        link: z.string().url(),
+        link: z.string().url().optional(),
         github: z.string().url().optional(),
         category: z.enum(['game', 'other']),
     }),

@@ -4,7 +4,7 @@ interface Props {
     description: string;
     tags: string[];
     image: string;
-    link: string;
+    link?: string;
     github?: string;
 }
 
@@ -25,7 +25,10 @@ const { title, description, tags, image, link, github } = Astro.props;
         </div>
 
         <div class="links">
-            <a href={link} class="btn primary" target="_blank">View Project</a>
+            {link && (
+                    <a href={link} class="btn primary" target="_blank">View Project</a>
+            )}
+
             {github && (
                     <a href={github} class="btn secondary" target="_blank">GitHub</a>
             )}
