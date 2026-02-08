@@ -236,14 +236,69 @@ import ExpNote from "../components/Experience/ExpNote.astro";
 
     /* Mobile handling */
     @media (max-width: 768px) {
+        .about-info, .skills, .experience {
+            padding: 2rem 1.5rem;
+        }
+
         .top-section {
             flex-direction: column;
             align-items: center;
+            gap: 2rem;
         }
 
-        .header h1 { font-size: 2.5rem; text-align: center; }
-        .about-info { padding: 2rem; }
-        .image-container img { width: 100%; max-width: 20rem; }
+        .text-main {
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        .sub-intro {
+            font-size: 1.4rem;
+        }
+
+        .bio-text {
+            font-size: 1.2rem;
+            max-width: 100%;
+        }
+
+        .image-container img {
+            width: 15rem;
+            border-width: 0.3rem;
+        }
+
+        .full-width-text h2 {
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .header h2 {
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .sub-heading {
+            font-size: 1.1rem !important;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .skill-row {
+            justify-content: center;
+            gap: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .cv-note {
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .section-spacer {
+            margin: 0.5rem auto;
+        }
     }
 
 
