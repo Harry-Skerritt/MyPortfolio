@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 
 const { title = "Harry Skerritt - Game Developer" } = Astro.props;
 ---
@@ -24,7 +25,9 @@ const { title = "Harry Skerritt - Game Developer" } = Astro.props;
 
 	<body>
 	<main>
+		<Navbar />
 		<slot />
+		<Footer />
 	</main>
 	</body>
 

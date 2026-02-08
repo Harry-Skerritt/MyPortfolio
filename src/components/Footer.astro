@@ -1,0 +1,49 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; {currentYear} <span class="accent">Harry Skerritt</span>. All rights reserved.</p>
+    </div>
+</footer>
+
+<style>
+    footer {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 1rem 2rem;
+        margin-top: auto;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-family: var(--font-mono), monospace;
+    }
+
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--white);
+        opacity: 0.8;
+    }
+
+    .accent {
+        color: var(--orange);
+    }
+
+    p {
+        margin: 0;
+        font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+        footer {
+            padding: 0.5rem 1rem;
+        }
+        .footer-content {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+</style>
