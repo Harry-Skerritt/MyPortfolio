@@ -29,6 +29,28 @@ export async function onRequestPost(context) {
     });
 
     if (res.ok) {
+        await fetch('https://api.resend.com/emails', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                from: `Harry Skerritt <no-reply@${env.DOMAIN_NAME}>`,
+                to: email,
+                subject: `Thanks for reaching out, ${name}!`,
+                html: `
+                    <div style="font-family: sans-serif; line-height: 1.5; color: #333;">
+                        <h2>Hi ${name},</h2>
+                        <p>Thanks for getting in touch through my portfolio. I've received your message and will get back to you as soon as I can.</p>
+                        <p>Best regards,<br /><strong>Harry Skerritt</strong></p>
+                        <hr style="border: none; border-top: 1px solid #eee; margin-top: 20px;" />
+                        <small style="color: #888;">This is an automated confirmation. Please do not reply directly to this email.</small>
+                    </div>
+                `,
+            }),
+        });
+
         return Response.redirect(`${new URL(request.url).origin}/thanks`, 303);
     } else {
         return new Response("Failed to send email", { status: 500 });
