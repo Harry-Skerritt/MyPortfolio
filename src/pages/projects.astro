@@ -93,4 +93,29 @@ const otherWork = allProjects.filter(p => p.data.category === 'other');
         padding: 2rem;
     }
 
+    /* Mobile handling */
+    @media (max-width: 768px) {
+        .main-header {
+            font-size: 2.2rem;
+            padding: 2rem 1rem 0 1rem;
+        }
+
+        .game-section, .project-section {
+            width: 100%;
+            padding: 2rem 1rem;
+            box-sizing: border-box;
+        }
+
+        .header h2 {
+            font-size: 1.6rem;
+            text-align: center;
+        }
+
+        .projects-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+        }
+    }
+
 </style>
