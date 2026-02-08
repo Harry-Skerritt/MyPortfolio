@@ -1,12 +1,96 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navbar from "../components/Navbar.astro";
+import ProjectCard from '../components/ProjectCard.astro';
+
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+const allProjects = await getCollection('projects');
+const games = allProjects.filter(p => p.data.category === 'game');
+const otherWork = allProjects.filter(p => p.data.category === 'other');
 ---
 
 <Layout title="My Projects | Harry Skerritt">
     <Navbar />
-    <section class="hero">
-        <h1>Projects</h1>
+
+    <h1 class="main-header"> My Projects </h1>
+
+    <section class="game-section">
+        <div class="header">
+            <h2>Games</h2>
+            <hr class="section-spacer">
+        </div>
+
+        <div class="projects-grid">
+            {games.map((project: CollectionEntry<'projects'>) => (
+                    <ProjectCard
+                            title={project.data.title}
+                            description={project.data.description}
+                            tags={project.data.tags}
+                            image={project.data.image}
+                            link={project.data.link}
+                            github={project.data.github}
+                    />
+            ))}
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="header">
+            <h2>Other Projects</h2>
+            <hr class="section-spacer">
+        </div>
+
+        <div class="projects-grid">
+            {otherWork.map((project: CollectionEntry<'projects'>) => (
+                    <ProjectCard
+                            title={project.data.title}
+                            description={project.data.description}
+                            tags={project.data.tags}
+                            image={project.data.image}
+                            link={project.data.link}
+                            github={project.data.github}
+                    />
+            ))}
+        </div>
     </section>
 
 </Layout>
+
+<style>
+
+    .main-header {
+        text-align: center;
+        font-size: 3rem;
+        padding: 3rem 0 0 0;
+        margin: 0;
+    }
+
+    .game-section, .project-section {
+        width: 90%;
+        padding: 4rem;
+        margin: 0 auto;
+        font-family: var(--font-mono), monospace;
+    }
+
+    .header h2 {
+        font-size: 2rem;
+        margin: 0 0 1rem 0;
+        color: var(--white);
+    }
+
+    .section-spacer {
+        color: var(--white);
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+</style>
