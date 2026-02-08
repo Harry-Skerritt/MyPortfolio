@@ -1,0 +1,48 @@
+---
+interface Props {
+    text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<div class="outline">
+    <p> <span class="bullet">></span> {text} </p>
+</div>
+
+<style>
+    :root {
+        --text-size: 1.2rem;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .outline {
+        width: fit-content;
+        min-width: min-content;
+        border: 0.2rem solid var(--orange);
+        border-radius: 0.5rem;
+        padding: 0.8rem 1.2rem;
+        display: inline-block;
+    }
+
+    .bullet {
+        color: var(--orange);
+        font-size: var(--text-size);
+        padding-right: 0.2rem;
+    }
+
+    p {
+        font-size: var(--text-size);
+        white-space: nowrap;
+        color: var(--white);
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+</style>
