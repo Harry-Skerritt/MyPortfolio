@@ -1,6 +1,6 @@
 ---
 title: "One Death Left"
-description: "This is a game I made for the Jamspeticeye Game Jam, in 5 days. This game went through quite alot of revisions during the jame, and is not exactly what I was aiming for, but as the second full game I've made I was pleased."
+description: "This is a game I made for the Jamspeticeye Game Jam in 5 days. This game went through quite alot of revisions during the jame, and is not exactly what I was aiming for, but as the second full game I've made I was pleased."
 date: "October 2025"
 image: "/projects/games/onedeathleft.png"
 tags: ["Unity", "C#", "Game Jam", "Game Design"]
