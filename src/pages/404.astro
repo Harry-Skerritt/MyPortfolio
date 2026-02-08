@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404: Not Found">
+    <main class="not-found-container">
+        <div class="content">
+            <span class="error-code">404</span>
+            <h1>Houston, we have a problem.</h1>
+            <p>The page you're looking for cannot be found!</p>
+
+            <div class="actions">
+                <a href="/" class="home-button">Return to Home</a>
+                <button onclick="history.back()" class="back-button">Go Back</button>
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    .not-found-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: calc(100vh - 100px);
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .error-code {
+        display: block;
+        font-size: 8rem;
+        font-weight: 900;
+        line-height: 1;
+        background: var(--orange);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: -2rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--white)
+    }
+
+    p {
+        font-size: 1.2rem;
+        color: #a1a1aa;
+        margin-bottom: 2rem;
+    }
+
+    .actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    .home-button {
+        background: var(--orange);
+        color: #fff;
+        padding: 0.8rem 1.5rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: transform 0.2s ease;
+    }
+
+    .home-button:hover {
+        transform: scale(1.05);
+    }
+
+    .back-button {
+        font-family: var(--font-mono), monospace;
+        background: transparent;
+        color: var(--white);
+        border: 1px solid var(--orange);
+        padding: 0.8rem 1.5rem;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .back-button:hover {
+        background: #27272a;
+    }
+</style>

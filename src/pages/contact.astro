@@ -39,7 +39,11 @@ import Navbar from "../components/Navbar.astro";
                     <span class="decoration">_</span>
                 </button>
             </form>
+
+            <a href="/privacy" class="privacy-button">Privacy Policy</a>
         </div>
+
+
     </section>
 
 
@@ -163,6 +167,25 @@ import Navbar from "../components/Navbar.astro";
         pointer-events: none;
         cursor: not-allowed;
     }
+
+    .privacy-button {
+        display: inline-block;
+        margin-top: 2rem;
+        font-family: var(--font-mono), monospace;
+        color: var(--white);
+        opacity: 0.5;
+        text-decoration: none;
+        font-size: 0.8rem;
+        border-bottom: 1px solid transparent;
+        transition: all 0.2s ease;
+    }
+
+    .privacy-button:hover {
+        opacity: 1;
+        color: var(--orange);
+        border-bottom: 1px solid var(--orange);
+    }
+
 
     /* Mobile handling */
     @media (max-width: 600px) {
