@@ -1,0 +1,11 @@
+# Allow all search engines to crawl everything
+User-agent: *
+Allow: /
+
+# Disallow specific paths
+Disallow: /thanks
+Disallow: /coming-soon
+Disallow: /private/
+
+# Link to your sitemap
+Sitemap: https://harryskerritt.co.uk/sitemap-index.xml
