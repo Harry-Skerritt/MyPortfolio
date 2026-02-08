@@ -1,7 +1,5 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-import Button from "../components/Button.astro";
 import Navbar from "../components/Navbar.astro";
 ---
 
@@ -22,7 +20,7 @@ import Navbar from "../components/Navbar.astro";
         </div>
 
         <div class="image">
-            <img alt="Harry Skerritt" src = "me.png"/>
+            <img alt="Harry Skerritt" src = "/me.png"/>
         </div>
 
     </section>
@@ -30,7 +28,6 @@ import Navbar from "../components/Navbar.astro";
 </Layout>
 
 <style>
-
     .main-lander {
         display: flex;
         flex-direction: row;
@@ -116,5 +113,57 @@ import Navbar from "../components/Navbar.astro";
         transform: translateY(0);
         box-shadow: none;
     }
+
+    @media (max-width: 768px) {
+        .main-lander {
+            flex-direction: column;
+            align-items: center;
+            padding: 3rem 0;
+            gap: 1.5rem;
+        }
+
+        .main-text {
+            display: contents;
+            margin-top: 2rem;
+        }
+
+        .main-text h1 {
+            font-size: 3rem;
+            text-align: left;
+            min-width: auto;
+            order: 1;
+            margin: 0;
+        }
+
+        .main-text h2 {
+            font-size: 1.6rem;
+            text-align: center;
+            order: 1;
+        }
+
+        .image {
+            width: 100%;
+            order: 2;
+            display: flex;
+            justify-content: center;
+            margin: 3rem 0;
+        }
+
+        img {
+            margin: 0;
+            width: 16rem;
+            height: 16rem;
+            border-width: 6px;
+        }
+
+        .glitch-btn {
+            order: 3;
+            margin: 2rem 0 0;
+            width: 100%;
+            max-width: 18rem;
+            justify-content: center;
+        }
+    }
+
 
 </style>
