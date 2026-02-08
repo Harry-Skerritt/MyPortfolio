@@ -1,0 +1,23 @@
+
+<li class="note">
+    <span class="bullet">></span>
+    <span class="content">
+        <slot />
+    </span>
+</li>
+
+<style>
+    .note {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 0.8rem;
+        color: var(--white);
+        font-size: 1.1rem;
+        line-height: 1.4;
+    }
+
+    .bullet {
+        color: var(--orange);
+        font-weight: bold;
+    }
+</style>

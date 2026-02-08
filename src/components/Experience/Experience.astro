@@ -1,0 +1,39 @@
+---
+interface Props {
+    title: string;
+    start_date: string;
+    end_date: string;
+    role: string;
+}
+
+const { title, start_date, end_date, role } = Astro.props;
+---
+
+<div class="experience">
+
+    <h1 class="title"> {title} </h1>
+    <h2 class="date"> {start_date} - {end_date} • {role} </h2>
+
+    <ul class="exp-notes">
+        <slot />
+    </ul>
+
+</div>
+
+<style>
+
+    .title {
+        padding: 2rem 0 0.3rem;
+        margin: 0;
+    }
+
+    .date {
+        font-weight: normal;
+        font-style: italic;
+        font-size: 1.2rem;
+        color: var(--white);
+        padding: 0;
+        margin: 0;
+    }
+
+</style>
