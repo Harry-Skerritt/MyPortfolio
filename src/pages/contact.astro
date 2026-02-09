@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Navbar from "../components/Navbar.astro";
 ---
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer />
+
 <Layout title="Contact Me | Harry Skerritt">
     <section class="contact-lander">
         <div class="contact-wrapper">
@@ -15,23 +17,27 @@ import Navbar from "../components/Navbar.astro";
             </div>
 
             <form class="visual-form" action="/send-email" method="POST">
+
                 <input type="text" name="honeypot" style="display:none" tabindex="-1" autocomplete="off" />
 
                 <div class="input-row">
                     <div class="field">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" placeholder="e.g. John Doe" />
+                        <label for="name">Name <span class="required-marker">*</span> </label>
+                        <input type="text" id="name" name="name" required placeholder="e.g. John Doe" />
                     </div>
                     <div class="field">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="email@domain.com" />
+                        <label for="email">Email <span class="required-marker">*</span> </label>
+                        <input type="email" id="email" name="email" required placeholder="email@domain.com" />
                     </div>
                 </div>
 
                 <div class="field">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="6" placeholder="Write your message here..."></textarea>
+                    <label for="message">Message <span class="required-marker">*</span> </label>
+                    <textarea id="message" name="message" rows="6" required placeholder="Write your message here..."></textarea>
                 </div>
+
+                <label for="turnstile">Verification <span class="required-marker">*</span> </label>
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAACZkP6GnBRXGBF_h"></div>
 
                 <button type="submit" class="glitch-btn" id="submit-btn">
                     <span class="text">Send Message</span>
@@ -117,6 +123,14 @@ import Navbar from "../components/Navbar.astro";
         letter-spacing: 1px;
     }
 
+    .required-marker {
+        color: #E36262;
+    }
+
+     .cf-turnstile {
+         margin: -1rem 0 0 0;
+     }
+
     input, select, textarea {
         background-color: rgba(255, 255, 255, 0.05);
         border: 2px solid #444;
@@ -197,16 +211,25 @@ import Navbar from "../components/Navbar.astro";
     }
 </style>
 
-
 <script>
     const form = document.querySelector('.visual-form');
     const btn = document.querySelector('#submit-btn');
     const btnText = btn?.querySelector('.text');
 
     if (form && btn && btnText) {
-        form.addEventListener('submit', () => {
+        form.addEventListener('submit', (e) => {
+            const turnstileResponse = form.querySelector('[name="cf-turnstile-response"]')?.value;
+
+            // Check if Turnstile is completed
+            if (!turnstileResponse) {
+                e.preventDefault();
+                alert('Please complete the security verification.');
+                return;
+            }
+
             btn.classList.add('submitting');
             btnText.textContent = "Sending...";
         });
     }
 </script>
+

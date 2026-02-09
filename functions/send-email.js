@@ -2,6 +2,26 @@ export async function onRequestPost(context) {
     const { request, env } = context;
     const formData = await request.formData();
 
+    // Turnstile Verification
+    const token = formData.get('cf-turnstile-response');
+    const ip = request.headers.get('CF-Connecting-IP');
+
+    let verifyFormData = new FormData();
+    verifyFormData.append('secret', env.TURNSTILE_SECRET_KEY);
+    verifyFormData.append('response', token);
+    verifyFormData.append('remoteip', ip);
+
+    const result = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+        body: verifyFormData,
+        method: 'POST',
+    });
+
+    const outcome = await result.json();
+    if (!outcome.success) {
+        return new Response("Security check failed. Please refresh and try again.", { status: 403 });
+    }
+
+    // Verified
     const name = formData.get('name');
     const email = formData.get('email');
     const message = formData.get('message');
