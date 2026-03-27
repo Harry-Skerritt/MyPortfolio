@@ -59,7 +59,7 @@ import Navbar from "../../components/Navbar.astro";
 
     <script>
         const params = new URLSearchParams(window.location.search);
-        const fileName = params.get('file');
+        const fileNameRaw = params.get('file');
         const errorCode = params.get('error');
 
         const fileDisplay = document.getElementById('file-name');
@@ -71,7 +71,9 @@ import Navbar from "../../components/Navbar.astro";
             }
             if (fileDisplay) fileDisplay.style.display = 'none';
         }
-        else if (fileName) {
+        else if (fileNameRaw) {
+            const fileName = decodeURIComponent(fileNameRaw);
+
             if (fileDisplay) {
                 fileDisplay.textContent = fileName;
             }
