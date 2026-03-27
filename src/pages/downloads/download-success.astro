@@ -1,9 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from "../components/Navbar.astro";
+import Layout from '../../layouts/Layout.astro';
+import Navbar from "../../components/Navbar.astro";
 ---
 
-<Layout title="Harry Skerritt | Download">
+<Layout title="Download Success | Harry Skerritt">
     <main class="thank-you-container">
         <div class="content-wrapper">
             <h1>Thank You!</h1>
@@ -74,8 +74,11 @@ import Navbar from "../components/Navbar.astro";
 
         if (fileName) {
             const downloadUrl = `https://downloads.harryskerritt.co.uk/${fileName}?download=true`;
-            const linkElem = document.getElementById('download-link');
-            if (linkElem) linkElem.href = downloadUrl;
+            const linkElem = document.getElementById('download-link') as HTMLAnchorElement;
+
+            if (linkElem) {
+                linkElem.href = downloadUrl;
+            }
 
             setTimeout(() => {
                 window.location.href = downloadUrl;

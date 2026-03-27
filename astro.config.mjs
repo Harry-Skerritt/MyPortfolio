@@ -5,5 +5,9 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://harryskerritt.co.uk',
-  integrations: [sitemap()]
+  integrations: [sitemap()],
+  redirects: {
+    '/download-success': '/downloads/download-success',
+    '/download-failed': '/downloads/download-failed',
+  }
 });

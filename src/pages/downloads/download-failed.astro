@@ -1,0 +1,71 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from "../../components/Navbar.astro";
+---
+
+<Layout title="Download Failed | Harry Skerritt">
+    <main class="error-container">
+        <div class="content-wrapper">
+            <h1>Link Expired or Invalid</h1>
+            <p>
+                We couldn't find the file <span id="file-name" class="failed-file-name">...</span>
+                Please double-check the link
+            </p>
+            <a href="/public" class="button">Return to Home</a>
+        </div>
+    </main>
+
+    <style>
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 120px);
+            text-align: center;
+            padding: 0 20px;
+        }
+
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 400px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #111827;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .failed-file-name {
+            font-family: var(--font-mono), monospace;
+            color: var(--orange);
+        }
+    </style>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const fileName = params.get('file');
+
+        if (fileName) {
+            const fileDisplay = document.getElementById('file-name');
+            if (fileDisplay) {
+                fileDisplay.textContent = fileName;
+            }
+        }
+    </script>
+</Layout>
