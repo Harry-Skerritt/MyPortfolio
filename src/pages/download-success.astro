@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from "../components/Navbar.astro";
+---
+
+<Layout title="Harry Skerritt | Download">
+    <main class="thank-you-container">
+        <div class="content-wrapper">
+            <h1>Thank You!</h1>
+            <p>Your download should start automatically.</p>
+
+            <span class="manual-start">
+                If your download does not start
+                <a id="download-link" href="#" class="manual-download-button">
+                    Click here
+                </a>
+            </span>
+        </div>
+    </main>
+
+    <style>
+        .thank-you-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 120px);
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .content-wrapper {
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        span {
+            color: var(--white);
+        }
+
+
+        .manual-download-button {
+            display: inline-block;
+            margin-top: 2rem;
+            font-family: var(--font-mono), monospace;
+            color: var(--white);
+            opacity: 0.5;
+            text-decoration: none;
+            font-size: 1rem;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .manual-download-button:hover {
+            opacity: 1;
+            color: var(--orange);
+            border-bottom: 1px solid var(--orange);
+        }
+    </style>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const fileName = params.get('file');
+
+        if (fileName) {
+            const downloadUrl = `https://downloads.harryskerritt.co.uk/${fileName}?download=true`;
+            const linkElem = document.getElementById('download-link');
+            if (linkElem) linkElem.href = downloadUrl;
+
+            setTimeout(() => {
+                window.location.href = downloadUrl;
+            }, 1000);
+        }
+    </script>
+</Layout>
