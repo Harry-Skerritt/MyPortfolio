@@ -7,7 +7,7 @@ import Navbar from "../../components/Navbar.astro";
     <main class="error-container">
         <div class="content-wrapper">
             <h1>Link Expired or Invalid</h1>
-            <p>
+            <p id="error-message">
                 We couldn't find the file <span id="file-name" class="failed-file-name">...</span>
                 Please double-check the link
             </p>
@@ -60,9 +60,18 @@ import Navbar from "../../components/Navbar.astro";
     <script>
         const params = new URLSearchParams(window.location.search);
         const fileName = params.get('file');
+        const errorCode = params.get('error');
 
-        if (fileName) {
-            const fileDisplay = document.getElementById('file-name');
+        const fileDisplay = document.getElementById('file-name');
+        const errorMessage = document.getElementById('error-message');
+
+        if (errorCode === 'no-file') {
+            if (errorMessage) {
+                errorMessage.textContent = "No file specified!";
+            }
+            if (fileDisplay) fileDisplay.style.display = 'none';
+        }
+        else if (fileName) {
             if (fileDisplay) {
                 fileDisplay.textContent = fileName;
             }
